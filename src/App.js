@@ -7,12 +7,22 @@ import {
   Redirect,
   withRouter
 } from "react-router-dom";
-import { Home, About, Topics } from './page';
+// import { Home, About, Topics } from './page';
+import loadable from "@loadable/component";
+import { Spin } from 'antd';
+
+const Home = loadable(() => import("./page/home/index.js"), {
+  fallback: <Spin />
+});
+const About = loadable(() => import("./page/about/index.js"), {
+  fallback: <Spin />
+});
+const Topics = loadable(() => import("./page/topics/index.js"), {
+  fallback: <Spin />
+});
 
 export default class extends Component {
   render() {
-    console.log('asaasssaaa======s======');
-    
     return (
       <Router>
         <div className="main">
